@@ -3,7 +3,7 @@
     "user": "root",
     "host": "localhost",
     "database": "crawler_test",
-    "MaxIdleConn": 9999,
-    "MaxOpenConn": 9999
+    "MaxIdleConn": 100,
+    "MaxOpenConn": 100
   }
 }

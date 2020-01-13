@@ -15,7 +15,7 @@ import (
 
 func main() {
 	base.InitConfig()
-	if err := base.ConnectDb(); err !=nil {
+	if err := base.ConnectDb(); err != nil {
 		fmt.Println(err)
 		os.Exit(1)
 	}
@@ -28,5 +28,5 @@ func main() {
 	})
 	r.HandleFunc("/scrap", sitemap.SitemapHandler)
 	http.Handle("/", r)
-	log.Fatal(http.ListenAndServe(":8989", r))
+	log.Fatal(http.ListenAndServe(":8765", r))
 }

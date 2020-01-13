@@ -1,14 +1,14 @@
 package testing
 
 import (
-	"github.com/varunpurohit76/crawler/base"
-	"github.com/varunpurohit76/crawler/graph"
-	"github.com/varunpurohit76/crawler/scrapper"
-	"github.com/varunpurohit76/crawler/sitemap"
 	"testing"
 
 	. "github.com/onsi/ginkgo"
 	. "github.com/onsi/gomega"
+	"github.com/varunpurohit76/crawler/base"
+	"github.com/varunpurohit76/crawler/graph"
+	"github.com/varunpurohit76/crawler/scrapper"
+	"github.com/varunpurohit76/crawler/sitemap"
 )
 
 func TestSiteMap(t *testing.T) {
@@ -21,7 +21,6 @@ var _ = BeforeSuite(func() {
 })
 
 var _ = Describe("sitemap as a service", func() {
-
 	Context("basic ux MockPageUrlExtract JsonView", func() {
 		It("www.monzo.com depth=0", func() {
 			rc := base.NewRequestContext()

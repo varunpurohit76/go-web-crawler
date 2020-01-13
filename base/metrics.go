@@ -1,10 +1,11 @@
 package base
 
 import (
-	log "github.com/sirupsen/logrus"
 	"time"
+
+	log "github.com/sirupsen/logrus"
 )
 
-func LogLatency(key string, f log.Fields, startTime time.Time)  {
+func LogLatency(key string, f log.Fields, startTime time.Time) {
 	log.WithFields(f).WithFields(log.Fields{"value": time.Now().Sub(startTime).Seconds()}).Info(key)
 }

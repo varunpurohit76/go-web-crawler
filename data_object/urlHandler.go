@@ -30,7 +30,7 @@ func GetUrlObj(ctx *base.RequestContext, tx *sqlx.Tx, id string) (*Url, error) {
 			return nil, err
 		}
 	}
-	ctx.Logger().WithFields(logrus.Fields{"id": url.Id, "link": url.Link}).Info("url db get success")
+	ctx.Logger().WithFields(logrus.Fields{"id": url.Id, "link": url.Link}).Debug("url db get success")
 	return url, nil
 }
 
@@ -58,6 +58,6 @@ func CreateUrlObj(ctx *base.RequestContext, tx *sqlx.Tx, urlObj *Url) (string, e
 			return "", err
 		}
 	}
-	ctx.Logger().WithFields(logrus.Fields{"id": urlObj.Id, "link": urlObj.Link}).Info("url db create success")
+	ctx.Logger().WithFields(logrus.Fields{"id": urlObj.Id, "link": urlObj.Link}).Debug("url db create success")
 	return id, nil
 }

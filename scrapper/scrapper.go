@@ -2,13 +2,14 @@ package scrapper
 
 import (
 	"fmt"
-	"github.com/sirupsen/logrus"
-	"github.com/varunpurohit76/crawler/base"
-	"golang.org/x/net/html"
 	"net/http"
 	"net/url"
 	"strings"
 	"time"
+
+	"github.com/sirupsen/logrus"
+	"github.com/varunpurohit76/crawler/base"
+	"golang.org/x/net/html"
 )
 
 type Scrapper interface {
@@ -16,7 +17,7 @@ type Scrapper interface {
 }
 
 type urlExtract struct{}
-type mockUrlExtract struct {}
+type mockUrlExtract struct{}
 type void struct{}
 
 var member void

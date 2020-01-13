@@ -2,9 +2,10 @@ package sitemap
 
 import (
 	"encoding/json"
+	"net/http"
+
 	"github.com/sirupsen/logrus"
 	"github.com/varunpurohit76/crawler/base"
-	"net/http"
 )
 
 type SiteMapRequest struct {

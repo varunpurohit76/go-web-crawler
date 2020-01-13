@@ -30,7 +30,7 @@ func GetRelationObj(ctx *base.RequestContext, tx *sqlx.Tx, parentId string) ([]*
 			return nil, err
 		}
 	}
-	ctx.Logger().WithFields(logrus.Fields{"parent_id": parentId, "relations": len(relations)}).Info("relation db get success")
+	ctx.Logger().WithFields(logrus.Fields{"parent_id": parentId, "relations": len(relations)}).Debug("relation db get success")
 	return relations, nil
 }
 
@@ -58,6 +58,6 @@ func CreateRelationObj(ctx *base.RequestContext, tx *sqlx.Tx, relationObj *Relat
 			return err
 		}
 	}
-	ctx.Logger().WithFields(logrus.Fields{"parent_id": relationObj.ParentId, "child_id": relationObj.ChildId}).Info("relation db create success")
+	ctx.Logger().WithFields(logrus.Fields{"parent_id": relationObj.ParentId, "child_id": relationObj.ChildId}).Debug("relation db create success")
 	return nil
 }

@@ -11,7 +11,7 @@ var Service = new(SiteMapImpl)
 
 type SiteMap interface {
 	Build(ctx *base.RequestContext, rooUrl string, depth int) interface{}
-	Init()
+	Init(scrappingAlgo int, view int)
 }
 
 type SiteMapImpl struct{}

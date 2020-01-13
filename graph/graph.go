@@ -1,12 +1,13 @@
 package graph
 
 import (
+	"sync"
+	"time"
+
 	"github.com/sirupsen/logrus"
 	"github.com/varunpurohit76/crawler/base"
 	. "github.com/varunpurohit76/crawler/data_object"
 	. "github.com/varunpurohit76/crawler/scrapper"
-	"sync"
-	"time"
 )
 
 type Graph interface {
@@ -23,7 +24,7 @@ type GraphImpl struct{}
 func (g *GraphImpl) Build(ctx *base.RequestContext, rootUrl string, depth int) *Url {
 	defer base.LogLatency("sitemap.graph.build.latency", nil, time.Now())
 	rootUrlObj := urlDO.New(rootUrl)
-	_, err := urlDO.Set(ctx,nil, rootUrlObj)
+	_, err := urlDO.Set(ctx, nil, rootUrlObj)
 	if err != nil {
 		return nil
 	}
@@ -53,7 +54,7 @@ func graphBuildRecursion(ctx *base.RequestContext, rootUrlObj *Url, depth int) {
 	// 3. persist children urlDO
 	var childrenId []string
 	for _, c := range children {
-		childId, err := urlDO.Set(ctx,nil, c)
+		childId, err := urlDO.Set(ctx, nil, c)
 		if err != nil {
 			return
 		}
@@ -62,7 +63,7 @@ func graphBuildRecursion(ctx *base.RequestContext, rootUrlObj *Url, depth int) {
 
 	// 4. create root <-> children relationDO
 	for _, cId := range childrenId {
-		err := relationDO.Set(ctx,nil, relationDO.New(rootUrlObj.Id, cId))
+		err := relationDO.Set(ctx, nil, relationDO.New(rootUrlObj.Id, cId))
 		if err != nil {
 			return
 		}
