@@ -1,0 +1,9 @@
+{
+  "db": {
+    "user": "root",
+    "host": "localhost",
+    "database": "crawler",
+    "MaxIdleConn": 9999,
+    "MaxOpenConn": 9999
+  }
+}
