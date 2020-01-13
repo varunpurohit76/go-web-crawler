@@ -1,0 +1,6 @@
+development:
+  driver: mysql
+  open: root:@tcp(localhost:3306)/crawler_test?charset=utf8&parseTime=True&loc=Local
+production:
+  driver: mysql
+  open: root:@tcp(localhost:3306)/crawler?charset=utf8&parseTime=True&loc=Local
