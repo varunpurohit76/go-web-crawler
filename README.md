@@ -1,3 +1,20 @@
+#### up and running
+1. goose for db migration `go get bitbucket.org/liamstask/goose/cmd/goose`
+1. migrate `goose -env production up`
+1. build `go build -i main.go`
+1. run `./main -config=config.json`
+1. call api
+    ```
+   curl -X GET \
+     http://localhost:8765/scrap \
+     -H 'Content-Type: application/json' \
+     -d '{
+   	"url": "https://www.monzo.com",
+   	"depth": 2
+   }'
+
+    ```
+
 ### design
 
 ![architecture](./assets/architecture.png)
