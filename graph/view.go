@@ -12,7 +12,8 @@ import (
 
 type SiteMapUrlNodeView struct {
 	Link     string                `json:"link"`
-	Children []*SiteMapUrlNodeView `json:"children"`
+	Id       string                `json:"id"`
+	Children []*SiteMapUrlNodeView `json:"children,omitempty"`
 }
 
 const (
@@ -45,10 +46,9 @@ func jsonView(ctx *base.RequestContext, depth int, root *Url) *SiteMapUrlNodeVie
 			go func(r *Relation) {
 				defer wg.Done()
 				child, err := urlDO.Get(ctx, nil, r.ChildId)
-				if err != nil && child != nil {
-					children <- nil
+				if err == nil && child != nil {
+					children <- jsonView(ctx, depth-1, child)
 				}
-				children <- jsonView(ctx, depth-1, child)
 			}(r)
 		}
 		wg.Wait()
@@ -56,12 +56,14 @@ func jsonView(ctx *base.RequestContext, depth int, root *Url) *SiteMapUrlNodeVie
 		for c := range children {
 			ch = append(ch, &SiteMapUrlNodeView{
 				Link:     c.Link,
+				Id:       c.Id,
 				Children: c.Children,
 			})
 		}
 	}
 	return &SiteMapUrlNodeView{
 		Link:     root.Link,
+		Id:       root.Id,
 		Children: ch,
 	}
 }

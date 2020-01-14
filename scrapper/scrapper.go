@@ -46,7 +46,10 @@ func (s *urlExtract) Scrap(ctx *base.RequestContext, rootUrl string) ([]string, 
 	if err != nil {
 		return links, err
 	}
-	resp, _ := http.Get(rootUrl)
+	resp, err := http.Get(rootUrl)
+	if err != nil {
+		return links, err
+	}
 	tokenizer := html.NewTokenizer(resp.Body)
 	for {
 		tokenType := tokenizer.Next()
