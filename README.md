@@ -65,3 +65,4 @@ This is called recursively and does not return anything. Builds the graph in lev
 
 1. expose graph.Build() as a service and scale horizontally
 
+![graph_build](./assets/graph.build.png)
