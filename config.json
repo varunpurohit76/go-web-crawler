@@ -5,5 +5,8 @@
     "database": "crawler",
     "MaxIdleConn": 100,
     "MaxOpenConn": 100
+  },
+  "log": {
+    "level": "info"
   }
 }

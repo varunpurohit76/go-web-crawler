@@ -19,7 +19,7 @@ func main() {
 		fmt.Println(err)
 		os.Exit(1)
 	}
-	base.InitLog(log.InfoLevel)
+	base.InitLog()
 	sitemap.Service.Init(scrapper.PageUrlExtract, graph.JsonView)
 
 	r := mux.NewRouter()

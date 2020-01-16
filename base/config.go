@@ -10,7 +10,8 @@ import (
 var Config config
 
 type config struct {
-	DB database `json:"db"`
+	DB  database `json:"db"`
+	Log logging  `json:"log"`
 }
 
 type database struct {
@@ -21,6 +22,10 @@ type database struct {
 	Params      []string `json:"params"`
 	MaxIdleConn int      `json:"MaxIdleConn"`
 	MaxOpenConn int      `json:"MaxOpenConn"`
+}
+
+type logging struct {
+	Level string `json:"level"`
 }
 
 func InitConfig() {

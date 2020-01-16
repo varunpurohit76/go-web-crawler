@@ -4,7 +4,6 @@ import (
 	"fmt"
 	"os"
 
-	log "github.com/sirupsen/logrus"
 	"github.com/varunpurohit76/crawler/base"
 	"github.com/varunpurohit76/crawler/sitemap"
 )
@@ -15,6 +14,6 @@ func TestServicesInit(algorithm int, view int) {
 		fmt.Println(err)
 		os.Exit(1)
 	}
-	base.InitLog(log.DebugLevel)
+	base.InitLog()
 	sitemap.Service.Init(algorithm, view)
 }

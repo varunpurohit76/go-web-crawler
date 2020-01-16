@@ -4,7 +4,8 @@ import (
 	log "github.com/sirupsen/logrus"
 )
 
-func InitLog(level log.Level) {
+func InitLog() {
 	log.SetFormatter(&log.JSONFormatter{})
+	level, _ := log.ParseLevel(Config.Log.Level)
 	log.SetLevel(level)
 }

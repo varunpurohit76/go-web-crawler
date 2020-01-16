@@ -61,7 +61,7 @@ func graphBuildRecursion(ctx *base.RequestContext, rootUrlObj *Url, depth int) {
 		childrenId = append(childrenId, childId)
 	}
 
-	// 4. create root <-> children relationDO
+	// 4. create and persist root <-> children relationDO
 	for _, cId := range childrenId {
 		err := relationDO.Set(ctx, nil, relationDO.New(rootUrlObj.Id, cId))
 		if err != nil {

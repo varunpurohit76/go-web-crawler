@@ -18,6 +18,7 @@ type SiteMapUrlNodeView struct {
 
 const (
 	JsonView = iota
+	XmlView
 )
 
 func ViewWrapper(ctx *base.RequestContext, kind int, depth int, root *Url) interface{} {
@@ -25,6 +26,8 @@ func ViewWrapper(ctx *base.RequestContext, kind int, depth int, root *Url) inter
 	case JsonView:
 		defer base.LogLatency("sitemap.graph.view.latency", nil, time.Now())
 		return jsonView(ctx, depth, root)
+	case XmlView:
+		return nil
 	default:
 		return nil
 	}

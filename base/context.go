@@ -26,11 +26,13 @@ func (ctx *RequestContext) Logger() *log.Entry {
 }
 
 func (ctx *RequestContext) SetLogger() {
+	if ctx.logger != nil {
+		return
+	}
 	ctx.logger = log.WithField("traceID", ctx.traceId)
 }
 
-func
-NewRequestContext() *RequestContext {
+func NewRequestContext() *RequestContext {
 	rc := &RequestContext{}
 	rc.SetTraceId()
 	rc.SetLogger()
